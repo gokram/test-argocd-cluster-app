@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: gcr.io/heptio-images/ks-guestbook-demo:0.2
+  name: test-mm-micro-17
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: .
+    repoURL: https://github.com/ACN-Backstage-Demo/test-argocd-fork.git
+    targetRevision: HEAD
